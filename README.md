@@ -34,6 +34,7 @@ Open http://localhost:8000 and sign in. (Google sign-in doesn't work from `file:
 | Direct `.mp4/.webm/.ogg/.mov` links | **Automatic** | HTML5 `<video>` events |
 | Loom, Dailymotion, Google Drive, other pages | **Manual** | These players don't expose playback — use the slider or **Mark complete** in the Progress tab |
 
+- YouTube videos play in the standard `youtube.com` player, so if you're signed in to YouTube in the same browser, your account applies (e.g. Premium = no ads). This comes from your browser's YouTube login, not from the app's Google sign-in. Private videos can't be embedded by YouTube, and age-restricted videos often won't play in an embed (use "Open original" for those); unlisted videos work.
 - A lesson auto-completes at 90% watched (`AUTO_COMPLETE_PCT` at the top of `app.js`) or when it ends.
 - Your position is saved, so lessons resume where you stopped.
 - Every lesson also has a manual **Mark complete** button and a checkbox in the course list.
