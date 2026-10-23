@@ -357,10 +357,10 @@
       }
       if (id) {
         const start = parseTimestamp(u.searchParams.get('t') || u.searchParams.get('start'));
-        return { kind: 'youtube', provider: 'YouTube', id, start, embed: `https://www.youtube-nocookie.com/embed/${id}?rel=0${start ? '&start=' + start : ''}` };
+        return { kind: 'youtube', provider: 'YouTube', id, start, embed: `https://www.youtube.com/embed/${id}?rel=0${start ? '&start=' + start : ''}` };
       }
       const list = u.searchParams.get('list');
-      if (list) return { kind: 'iframe', provider: 'YouTube playlist', embed: `https://www.youtube-nocookie.com/embed/videoseries?list=${encodeURIComponent(list)}` };
+      if (list) return { kind: 'iframe', provider: 'YouTube playlist', embed: `https://www.youtube.com/embed/videoseries?list=${encodeURIComponent(list)}` };
     }
 
     if (host.endsWith('vimeo.com')) {
@@ -743,7 +743,9 @@
     withTimeout(loadYouTubeAPI(), 10000).then(() => {
       if (ctrl.destroyed) return;
       ctrl.player = new YT.Player(holder, {
-        host: 'https://www.youtube-nocookie.com',
+        // Standard youtube.com player (not youtube-nocookie) so the viewer's own signed-in
+        // YouTube account applies: Premium (no ads), their preferences, etc.
+        host: 'https://www.youtube.com',
         videoId: parsed.id,
         width: '100%', height: '100%',
         playerVars: {
